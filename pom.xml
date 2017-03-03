@@ -40,5 +40,24 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-
+	<profiles>
+		<profile>
+			<id>default</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<modules>
+				<module>using_extended_dsl</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>extending</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<modules>
+				<module>extending_dsl</module>
+			</modules>
+		</profile>
+	</profiles>
 </project>
