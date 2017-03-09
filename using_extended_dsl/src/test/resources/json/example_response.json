@@ -1,0 +1,11 @@
+{
+  "things":[
+    {
+      "id":123
+    }
+  ],
+  "someOtherThing":{
+    "things":[
+    ]
+  }
+}

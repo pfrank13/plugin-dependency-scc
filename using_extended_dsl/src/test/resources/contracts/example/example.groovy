@@ -1,4 +1,4 @@
-package contracts
+package contracts.example
 
 import org.springframework.cloud.contract.spec.Contract
 
@@ -13,9 +13,22 @@ Contract.make {
     }
     response {
         status 200
-        body (["type":"foo"])
+        body (['things':[['id':anyNumber()]]])
         headers {
             contentType(applicationJson())
         }
     }
 }
+
+/*
+{
+  "things":[
+    {
+      "id":"notNull"
+    }
+  ],
+  "someOtherThing":{
+    "things":[]
+  }
+}
+ */

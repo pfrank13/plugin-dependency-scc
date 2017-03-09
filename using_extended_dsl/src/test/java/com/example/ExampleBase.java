@@ -6,6 +6,12 @@ import com.jayway.restassured.RestAssured;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+import org.springframework.util.StreamUtils;
+
+import java.io.IOException;
+
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 
 /**
@@ -15,12 +21,15 @@ public class ExampleBase {
   private static WireMockServer wireMockServer;
 
   @BeforeClass
-  public static void setUpClass(){
+  public static void setUpClass() throws IOException{
     wireMockServer = new WireMockServer(0);
     wireMockServer.start();
+
+    RestAssured.baseURI = "http://localhost";
     RestAssured.port = wireMockServer.port();
 
-    WireMock.get(urlPathEqualTo("foo")).willReturn(aResponse().withStatus(200).withBody("{\"type\":\"foo\"}").withHeader("Content-Type", "application/json"));
+    final Resource exampleResponseJson = new ClassPathResource("/json/example_response.json");
+    wireMockServer.stubFor(WireMock.get(urlEqualTo("/foo")).willReturn(aResponse().withStatus(200).withBody(StreamUtils.copyToByteArray(exampleResponseJson.getInputStream())).withHeader("Content-Type", "application/json")));
   }
 
 
