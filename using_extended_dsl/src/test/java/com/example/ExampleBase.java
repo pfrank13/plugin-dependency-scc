@@ -11,6 +11,8 @@ import org.springframework.core.io.Resource;
 import org.springframework.util.StreamUtils;
 
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 
@@ -38,4 +40,11 @@ public class ExampleBase {
     wireMockServer.stop();
   }
 
+  public void optionalNotNullOrEmptyString(final Object value){
+    if(value != null){
+      final Pattern nonEmptyString = Pattern.compile(".+");
+      final Matcher matcher = nonEmptyString.matcher((String)value);
+      assert matcher.matches() : "value $value was supposed to not be empty";
+    }
+  }
 }

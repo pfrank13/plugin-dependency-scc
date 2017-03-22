@@ -1,11 +1,12 @@
 {
-  "things":[
+  "myArray": [
     {
-      "id":123
+      "notABugGeneratedHere": "foo",
+      "anotherArrayNeededForBug": [
+        {
+          "optionalNotEmpty": "12"
+        }
+      ]
     }
-  ],
-  "someOtherThing":{
-    "things":[
-    ]
-  }
+  ]
 }

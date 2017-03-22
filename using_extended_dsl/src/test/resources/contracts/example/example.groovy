@@ -14,7 +14,16 @@ Contract.make {
     response {
         status 200
         body ([
-            url: anyUrl()
+            myArray:[
+                            [
+                                notABugGeneratedHere: execute('optionalNotNullOrEmptyString($it)'),
+                                anotherArrayNeededForBug:[
+                                                            [
+                                                                optionalNotEmpty: execute('optionalNotNullOrEmptyString($it)') //This generates a bad JSONPath because of the get
+                                                            ]
+                                                         ]
+                            ]
+                         ]
         ])
         headers {
             contentType(applicationJson())
