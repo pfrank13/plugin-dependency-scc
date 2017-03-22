@@ -13,22 +13,11 @@ Contract.make {
     }
     response {
         status 200
-        body (['things':[['id':anyNumber()]]])
+        body ([
+            url: anyUrl()
+        ])
         headers {
             contentType(applicationJson())
         }
     }
 }
-
-/*
-{
-  "things":[
-    {
-      "id":"notNull"
-    }
-  ],
-  "someOtherThing":{
-    "things":[]
-  }
-}
- */
