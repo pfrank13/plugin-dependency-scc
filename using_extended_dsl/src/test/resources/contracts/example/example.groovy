@@ -14,7 +14,7 @@ Contract.make {
     response {
         status 200
         body ([
-            url: anyUrl()
+            iso8601WithOffset: iso8601WithOffset()
         ])
         headers {
             contentType(applicationJson())
