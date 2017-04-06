@@ -14,7 +14,7 @@ Contract.make {
     response {
         status 200
         body ([
-            iso8601WithOffset: iso8601WithOffset()
+            thisWontBeThere: anyNumber()
         ])
         headers {
             contentType(applicationJson())
