@@ -7,5 +7,6 @@
   "someOtherThing":{
     "things":[
     ]
-  }
+  },
+  "url" : "http://foo.com"
 }
